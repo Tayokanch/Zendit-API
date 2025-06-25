@@ -1,4 +1,4 @@
-import { fetchEsims, purchaseEsim } from '../services/zenditService.js';
+import { fetchEsims, getTransactionById, purchaseEsim } from '../services/zenditService.js';
 const fetchEsimController = async (req, res) => {
   try {
     const limit = req.query.limit || '50';
@@ -27,14 +27,16 @@ const purchaseEsimController = async (req, res) => {
   }
 };
 
-const getTransactionByIdController = async (req, res)=>{
-  try{
-
-  }
-  catch(err){
-        console.error(' Failed to get transaction by ID:', err.message);
+ const getTransactionByIdController = async (req, res) => {
+  try {
+    const { id: transactionId } = req.params;
+    const transaction = await getTransactionById(transactionId);
+    console.log("Transaction", transaction)
+    res.json(transaction);
+  } catch (err) {
+    console.error(' Failed to get transaction by ID:', err.message);
     res.status(500).json({ error: 'Error getting transaction by ID.' });
   }
-}
+};
 
-export { fetchEsimController, purchaseEsimController };
+export { fetchEsimController, purchaseEsimController, getTransactionByIdController};

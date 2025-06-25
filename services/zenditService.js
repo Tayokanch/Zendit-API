@@ -37,6 +37,7 @@ export const purchaseEsim = async (product_id, transactionId) => {
 };
 
 export const getTransactionById = async (transactionId) => {
-  const res = await axios.get(`${BASE_URL}/purchases/${id}`, { headers });
+  
+  const res = await axios.get(`${BASE_URL}/purchases/${transactionId}`, { headers });
   return res.data;
 };
