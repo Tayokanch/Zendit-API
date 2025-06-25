@@ -17,8 +17,8 @@ const fetchEsimController = async (req, res) => {
 
 const purchaseEsimController = async (req, res) => {
   try {
-    const productId = req.productId;
-    const eSim = await purchaseEsim(productId);
+    const { offerId, transactionId } = req.body;
+    const eSim = await purchaseEsim(offerId, transactionId);
     console.log('Purchased Esim Response:', eSim);
     res.json(eSim);
   } catch (err) {
@@ -26,5 +26,15 @@ const purchaseEsimController = async (req, res) => {
     res.status(500).json({ error: 'Error purchasing eSIM.' });
   }
 };
+
+const getTransactionByIdController = async (req, res)=>{
+  try{
+
+  }
+  catch(err){
+        console.error(' Failed to get transaction by ID:', err.message);
+    res.status(500).json({ error: 'Error getting transaction by ID.' });
+  }
+}
 
 export { fetchEsimController, purchaseEsimController };
