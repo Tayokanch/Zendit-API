@@ -1,8 +1,9 @@
 import express from "express";
-import {getAvailableEsims} from "../controllers/esim.controller.js"
+import {fetchEsimController, purchaseEsimController} from "../controllers/esim.controller.js"
 
 
 const router = express.Router();
-router.get('/esims', getAvailableEsims)
+router.get('/esims', fetchEsimController)
+router.post('/buy-esim', purchaseEsimController)
 
 export default router;
