@@ -8,7 +8,7 @@ const getAvailableEsims = async (req, res) => {
     const country = req.query.country || 'US';
     const brand = req.query.brand || 'eSIM';
 
-    const esims = await fetchEsims({ limit, offset, country, brand });
+    const esims = await fetchEsims({limit, offset, country, brand});
     console.log('📦 Available eSIMs:', esims);
     res.json(esims);
   } catch (error) {

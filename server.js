@@ -1,14 +1,19 @@
 import express from "express"
 import bodyParser from "body-parser"
 import dotenv from 'dotenv';
-import { router } from "./routes/eSim.routes.js";
+import morgan from "morgan";
+import getSimRouter from "./routes/eSim.routes.js"
 dotenv.config();
 
 const app = express();
 app.use(bodyParser.json())
-app.use(router);
+app.use(morgan('dev'));
 
-const PORT = process.env.PORT || 3000;
+app.use('/', getSimRouter );
+
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
+
+ 
