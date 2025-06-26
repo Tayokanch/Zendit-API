@@ -1,6 +1,9 @@
 🔐 **Environment Variables**
+
 ZENDIT_API_KEY=`your_sandbox_api_key_here`
+
 ZENDIT_BASE_URL="https://api.zendit.io/v1/esim"
+
 PORT=3000
 
 📥 Task 1: Fetch Available eSIMs
@@ -22,9 +25,11 @@ GET /esims
 If country and/or brand are provided, they are included as filters in the request. If not provided, the API will return results across all regions and brands.
 
 ⚙️ **Behavior & Defaults**
+
 If no query parameters are provided, default values are automatically applied:
 
 req.query.limit || '50';
+
 req.query.offset || '5';
 
 🧪 **Example Requests (Insomnia)**
