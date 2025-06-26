@@ -4,8 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const ZENDIT_API_KEY = process.env.ZENDIT_API_KEY;
-const BASE_URL = process.env.BASE_URL;
-
+const ZENDIT_BASE_URL = process.env.ZENDIT_BASE_URL;
 const headers = {
   Authorization: `Bearer ${ZENDIT_API_KEY}`,
   'Content-Type': 'application/json',
@@ -19,9 +18,9 @@ export const fetchEsims = async ({ limit, offset, country, brand }) => {
     brand,
   };
   console.log(
-    'This is the url ' + `${BASE_URL}/offers?` + qs.stringify(params)
+    'This is the url ' + `${ZENDIT_BASE_URL}/offers?` + qs.stringify(params)
   );
-  const res = await axios.get(`${BASE_URL}/offers`, { headers, params });
+  const res = await axios.get(`${ZENDIT_BASE_URL}/offers`, { headers, params });
   return res.data;
 };
 
@@ -32,12 +31,12 @@ export const purchaseEsim = async (product_id, transactionId) => {
     transactionId,
   };
 
-  const res = await axios.post(`${BASE_URL}/purchases`, body, { headers });
+  const res = await axios.post(`${ZENDIT_BASE_URL}/purchases`, body, { headers });
   return res.data;
 };
 
 export const getTransactionById = async (transactionId) => {
   
-  const res = await axios.get(`${BASE_URL}/purchases/${transactionId}`, { headers });
+  const res = await axios.get(`${ZENDIT_BASE_URL}/purchases/${transactionId}`, { headers });
   return res.data;
 };
