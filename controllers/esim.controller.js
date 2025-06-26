@@ -5,8 +5,8 @@ import {
 } from '../services/zenditService.js';
 const fetchEsimController = async (req, res) => {
   try {
-    const limit = req.query.limit || '50';
-    const offset = req.query.offset || '5';
+    const limit = req.query.limit || 0;
+    const offset = req.query.offset || 0;
     const country = req.query.country;
     const brand = req.query.brand;
 
