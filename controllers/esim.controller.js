@@ -1,4 +1,8 @@
-import { fetchEsims, getTransactionById, purchaseEsim } from '../services/zenditService.js';
+import {
+  fetchEsims,
+  getTransactionById,
+  purchaseEsim,
+} from '../services/zenditService.js';
 const fetchEsimController = async (req, res) => {
   try {
     const limit = req.query.limit || '50';
@@ -18,6 +22,13 @@ const fetchEsimController = async (req, res) => {
 const purchaseEsimController = async (req, res) => {
   try {
     const { offerId, transactionId } = req.body;
+
+    if (!offerId || !transactionId) {
+      return res.status(400).json({
+        error:
+          'Missing required fields: offerId and transactionId are required.',
+      });
+    }
     const eSim = await purchaseEsim(offerId, transactionId);
     console.log('Purchased Esim Response:', eSim);
     res.json(eSim);
@@ -27,11 +38,12 @@ const purchaseEsimController = async (req, res) => {
   }
 };
 
- const getTransactionByIdController = async (req, res) => {
+const getTransactionByIdController = async (req, res) => {
   try {
     const { id: transactionId } = req.params;
+
     const transaction = await getTransactionById(transactionId);
-    console.log("Transaction", transaction)
+    console.log('Transaction', transaction);
     res.json(transaction);
   } catch (err) {
     console.error(' Failed to get transaction by ID:', err.message);
@@ -39,4 +51,8 @@ const purchaseEsimController = async (req, res) => {
   }
 };
 
-export { fetchEsimController, purchaseEsimController, getTransactionByIdController};
+export {
+  fetchEsimController,
+  purchaseEsimController,
+  getTransactionByIdController,
+};
