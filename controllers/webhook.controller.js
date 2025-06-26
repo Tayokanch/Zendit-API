@@ -11,12 +11,12 @@ if (!signatureHeader || !signatureHeader.startsWith("Bearer ")) {
   console.warn(" Missing Authorization header");
   return res.status(403).json({ error: "Invalid Authorization format" });
 }
-const token = signatureHeader.split(" ")[1]; 
+const signature = signatureHeader.split(" ")[1]; 
 
 console.log("📦 Payload received:", req.body);
 
 
-if (token !== secret) {
+if (signature !== secret) {
   console.warn(" Invalid webhook signature token");
   return res.status(403).json({ error: "Invalid webhook signature" });
 }
