@@ -57,28 +57,40 @@ req.query._offset || 0;
 🧪 `Example Request (INSOMNIA)`
 
 ✅ Get all eSIMs (default pagination)
-
 GET `/esims`
 ![alt text](default_query.png)
 
 
 ✅ Custom pagination
-GET `/esims?_limit=200&_offset=100`
+**Query Parameters:**
+- _limit=200
+- _offset=100
 ![alt text](filter_by_limit&offset.png)
 
 
 ✅ Filter by country
-GET `/esims?_limit=100&_offset=0&country=AE`
+**Query Parameters:**
+
+- country=AE
 ![alt text](filter_by_country.png)
 
 
 ✅ Filter by brand
-GET `/esims?_limit=200&_offset=100&brand=eSIM`
+**Query Parameters:**
+
+- _limit=200
+- _offset=100
+- brand=eSIM
+
 ![alt text](filter_by_brand.png)
 
 ✅ Filter by country & brand
+**Query Parameters:**
 
-GET `/esims?_limit=200&_offset=0&brand=eSIM&country=US`
+- _limit=200
+- brand=eSIM
+- country US
+
 ![alt text](filter_by_brand&country.png)
 
 ==========================================================================
