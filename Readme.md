@@ -37,11 +37,15 @@ req.query.offset || 0;
 
 ✅ Get all eSIMs (default pagination)
 GET `/esims`
+
 ![alt text](default_query-1.png)
+
 
 ✅ Custom pagination
 GET `/esims?_limit=200&_offset=100`
+
 ![alt text](offset_limit.png)
+
 
 ✅ Filter by country
 GET `/esims?_limit=100&_offset=0&country=AE`
