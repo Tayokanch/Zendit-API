@@ -12,7 +12,7 @@ PORT=3000
 This endpoint fetches a list of available eSIMs from Zendit's sandbox API. It supports required pagination controls (\_limit, \_offset) and optional filtering by country and brand (network type).
 
 🔧 **Endpoint**
-GET /esims
+GET `/esims`
 
 📌 **Query Parameters**
 
@@ -33,28 +33,29 @@ req.query.limit || 0;
 
 req.query.offset || 0;
 
-🧪 **Example Requests (Insomnia)**
+🧪 `Example Request (INSOMNIA)`
+
 ✅ Get all eSIMs (default pagination)
-GET /esims
+GET `/esims`
 ![alt text](default_query.png)
 
 ✅ Custom pagination
-GET /esims?_limit=200&_offset=100
+GET `/esims?_limit=200&_offset=100`
 ![alt text](offset_limit.png)
 
 ✅ Filter by country
-GET /esims?_limit=100&_offset=0&country=AE
+GET `/esims?_limit=100&_offset=0&country=AE`
 ![alt text](filterbyCountry.png)
 
 ✅ Filter by brand
-GET /esims?limit=200&offset=5&brand=eSIM
+GET `/esims?limit=200&offset=5&brand=eSIM`
 ![alt text](filter_by_brand.png)
 
 ✅ Filter by country & brand
-GET /esims?limit=10&offset=5&country=AE&brand=eSIM
+GET `/esims?limit=10&offset=5&country=AE&brand=eSIM`
 ![alt text](filter_by_country_brand.png)
 ===============================================================================================================
-================================================================================================================
+===============================================================================================================
 
 📥 Task 2: Purchase an eSIM
 
@@ -75,7 +76,7 @@ offerId (a.k.a product ID)
 
 transactionId (a unique string you generate)
 
-🧪**Example Request (Insomnia)**
+🧪 `Example Request (INSOMNIA)`
 
 POST /buy-esim
 
@@ -85,3 +86,30 @@ POST /buy-esim
 }
 
 ![alt text](purchase_eSIM.png)
+
+==========================================================================
+==============================
+
+🔍 Task 3: Get Transaction by ID
+
+✅**Goal**
+This endpoint allows retrieval of detailed information about a previously made eSIM purchase using the unique `transactionId` generated during that purchase request.
+
+🧾 Endpoint
+GET `/transaction/:id`
+
+🧠 How It Works
+- `:id` in the URL path is the `transactionId`. This is the transactionId one our system generated when purchasing an eSIM.
+- The controller extracts this ID from the route, calls the Zendit API, and returns the full transaction response.
+
+📥 Path Parameter
+
+| Parameter | Type   | Required | Description                                            |
+| --------- | ------ | -------- | ------------------------------------------------------ |
+| `id`      | string | ✅ Yes    | Your own system’s `transactionId` used during purchase |
+
+💻 Example Request (INSOMNIA)
+
+GET `/transaction/2307ehsKEKGLE`
+
+![alt text](image.png)
