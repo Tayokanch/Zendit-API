@@ -29,7 +29,7 @@ If country and/or brand are provided, they are included as filters in the reques
 
 If no query parameters are provided, default values are automatically applied:
 
-req.query.limit || 0;
+req.query.limit || 100;
 
 req.query.offset || 0;
 
@@ -37,7 +37,7 @@ req.query.offset || 0;
 
 ✅ Get all eSIMs (default pagination)
 GET `/esims`
-![alt text](default_query.png)
+![alt text](default_query-1.png)
 
 ✅ Custom pagination
 GET `/esims?_limit=200&_offset=100`
@@ -48,12 +48,15 @@ GET `/esims?_limit=100&_offset=0&country=AE`
 ![alt text](filterbyCountry.png)
 
 ✅ Filter by brand
-GET `/esims?limit=200&offset=5&brand=eSIM`
+GET `/esims?_limit=200&_offset=5&brand=eSIM`
 ![alt text](filter_by_brand.png)
 
 ✅ Filter by country & brand
-GET `/esims?limit=10&offset=5&country=AE&brand=eSIM`
-![alt text](filter_by_country_brand.png)
+
+GET `/esims?_limit=200&brand=eSIM&country=US`
+![alt text](filter_by_brand&country.png)
+
+http://localhost:3000/esims?_limit=200&brand=eSIM&country=US
 ===============================================================================================================
 ===============================================================================================================
 

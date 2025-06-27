@@ -5,13 +5,12 @@ import {
 } from '../services/zenditService.js';
 const fetchEsimController = async (req, res) => {
   try {
-    const limit = req.query.limit || 0;
-    const offset = req.query.offset || 0;
+    const limit = req.query._limit || 100;
+    const offset = req.query._offset || 0;
     const country = req.query.country;
     const brand = req.query.brand;
 
     const esims = await fetchEsims({ limit, offset, country, brand });
-    console.log('Available eSIMs:', esims);
     res.json(esims);
   } catch (err) {
     console.error(' Failed to fetch eSIMs:', err.message);
