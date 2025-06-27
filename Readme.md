@@ -37,27 +37,26 @@ req.query.offset || 0;
 
 ✅ Get all eSIMs (default pagination)
 GET `/esims`
-
-![alt text](default_query-1.png)
+![alt text](default_query.png)
 
 
 ✅ Custom pagination
 GET `/esims?_limit=200&_offset=100`
-
-![alt text](offset_limit.png)
+![alt text](filter_by_limit&offset.png)
 
 
 ✅ Filter by country
 GET `/esims?_limit=100&_offset=0&country=AE`
-![alt text](filterbyCountry.png)
+![alt text](filter_by_country.png)
+
 
 ✅ Filter by brand
-GET `/esims?_limit=200&_offset=5&brand=eSIM`
+GET `/esims?_limit=200&_offset=100&brand=eSIM`
 ![alt text](filter_by_brand.png)
 
 ✅ Filter by country & brand
 
-GET `/esims?_limit=200&brand=eSIM&country=US`
+GET `/esims?_limit=200&_offset=0&brand=eSIM&country=US`
 ![alt text](filter_by_brand&country.png)
 
 http://localhost:3000/esims?_limit=200&brand=eSIM&country=US
