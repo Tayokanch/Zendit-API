@@ -100,8 +100,7 @@ GET `/esims`
 
 ![alt text](filter_by_brand&country.png)
 
-==========================================================================
-==============================
+---
 
 1. 📥 Task 2: Purchase an eSIM
 
@@ -133,8 +132,7 @@ POST /buy-esim
 
 ![alt text](purchase_eSIM.png)
 
-==========================================================================
-==============================
+---
 
 3. 🔍 Task 3: Get Transaction by ID
 
@@ -160,8 +158,7 @@ GET `/transaction/2307ehsKEKGLE`
 
 ![alt text](image.png)
 
-==========================================================================
-==============================
+---
 
 4. 🔐Task 4: Webhook Signature Verification
    
@@ -172,12 +169,13 @@ This endpoint receives webhook events from Zendit (e.g., purchase status updates
 ` /webhook`
 
 
-🔐 Authentication & Signature Verification
+🔐 **Authentication & Signature Verificatio**
+
 When registering your webhook in the Zendit sandbox, you defined a custom HTTP header:
 
 - Header KEY: Authorization
 - Header Value: Bearer <webhook-secret-token>
-- This should also be secret token is stored in your .env file as: `WEBHOOK_SECRET=your-webhook-secret-token`
+- This should also be secret token stored in your .env file as: `WEBHOOK_SECRET=your-webhook-secret-token`
 
 💻 `Example Request ( Verify Signature through INSOMNIA)`
 
