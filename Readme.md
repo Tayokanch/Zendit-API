@@ -1,8 +1,8 @@
 ✅ Requirements to RUN This Project
-1. Install Node.js (npm -v)
-2. Install Project Dependecies (npm install)
+1. Install Node.js (`npm -v`)
+2. Install Project Dependecies (`npm install`)
 3. Create `.env` file (Use the .env.example as a template:)
-4. Run the Server (npm start)
+4. Run the Server (`npm start`)
 
 🔐 **Environment Variables**
 
@@ -31,19 +31,33 @@ GET `/esims`
 | `country` | ❌ No    | ""      | Filter results by ISO country code (e.g., `AD` `US` `AE` ) |
 | `brand`   | ❌ No    | ""      | Filter by brand/network (e.g., `eSIM`)                     |
 
-If country and/or brand are provided, they are included as filters in the request. If not provided, the API will return results across all regions and brands.
 
-⚙️ **Behavior & Defaults**
+🔎 **Filtering Behavior**
+
+- The `country` and `brand` query parameters are optional filters.
+- If both are provided, they will be used to narrow down the results.
+- If neither is provided, the API will return results across all regions and brands; but only if valid `_limit` and `_offset` values are set.
+- If `_limit = 0` and `_offset = 0` are used (as provided by default in the Zendit documentaion), Zendit will return an empty `list`, even though total may show thousands of results. e.g
+- `
+ {
+  "total": 5017,
+  "limit": 0,
+  "offset": 0,
+  "list": []
+} `
+
+🧠 **Recommended Defaults (Used in This Project)**
 
 If no query parameters are provided, default values are automatically applied:
 
-req.query.limit || 100;
+req.query._limit || 100;
 
-req.query.offset || 0;
+req.query._offset || 0;
 
 🧪 `Example Request (INSOMNIA)`
 
 ✅ Get all eSIMs (default pagination)
+
 GET `/esims`
 ![alt text](default_query.png)
 
@@ -70,7 +84,7 @@ GET `/esims?_limit=200&_offset=0&brand=eSIM&country=US`
 ==========================================================================
 ==============================
 
-2. 📥 Task 2: Purchase an eSIM
+1. 📥 Task 2: Purchase an eSIM
 
 ✅ **Goal**
 
