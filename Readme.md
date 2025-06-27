@@ -62,20 +62,26 @@ GET `/esims`
 
 
 ✅ Custom pagination
+
 **Query Parameters:**
+
 - _limit=200
 - _offset=100
+
 ![alt text](filter_by_limit&offset.png)
 
 
 ✅ Filter by country
+
 **Query Parameters:**
 
 - country=AE
+
 ![alt text](filter_by_country.png)
 
 
 ✅ Filter by brand
+
 **Query Parameters:**
 
 - _limit=200
@@ -85,6 +91,7 @@ GET `/esims`
 ![alt text](filter_by_brand.png)
 
 ✅ Filter by country & brand
+
 **Query Parameters:**
 
 - _limit=200
