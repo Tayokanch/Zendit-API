@@ -59,7 +59,6 @@ GET `/esims?_limit=200&_offset=100&brand=eSIM`
 GET `/esims?_limit=200&_offset=0&brand=eSIM&country=US`
 ![alt text](filter_by_brand&country.png)
 
-http://localhost:3000/esims?_limit=200&brand=eSIM&country=US
 ===============================================================================================================
 ===============================================================================================================
 
