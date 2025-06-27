@@ -1,17 +1,16 @@
 🔐 **Environment Variables**
 
 ZENDIT_API_KEY=`your_sandbox_api_key_here`
-
+WEBHOOK_SECRET=`your-webhook-token-here`
 ZENDIT_BASE_URL="https://api.zendit.io/v1/esim"
-
 PORT=3000
 
-📥 Task 1: Fetch Available eSIMs
+1. 📥 Task 1: Fetch Available eSIMs
 
 ✅ **Goal**
 This endpoint fetches a list of available eSIMs from Zendit's sandbox API. It supports required pagination controls (\_limit, \_offset) and optional filtering by country and brand (network type).
 
-🔧 **Endpoint**
+🧾 **Endpoint**
 GET `/esims`
 
 📌 **Query Parameters**
@@ -62,11 +61,11 @@ GET `/esims?_limit=200&_offset=0&brand=eSIM&country=US`
 ===============================================================================================================
 ===============================================================================================================
 
-📥 Task 2: Purchase an eSIM
+2. 📥 Task 2: Purchase an eSIM
 
 ✅ **Goal**
 
-Create a POST /buy-esim endpoint that allows users to initiate an eSIM purchase via the Zendit API.
+Create a POST `/buy-esim` endpoint that allows users to initiate an `eSIM` purchase via the Zendit API.
 
 | Field           | Type   | Required | Description                                             |
 | --------------- | ------ | -------- | ------------------------------------------------------- |
@@ -81,7 +80,7 @@ offerId (a.k.a product ID)
 
 transactionId (a unique string you generate)
 
-🧪 `Example Request (INSOMNIA)`
+💻 `Example Request (INSOMNIA)`
 
 POST /buy-esim
 
@@ -95,7 +94,7 @@ POST /buy-esim
 ==========================================================================
 ==============================
 
-🔍 Task 3: Get Transaction by ID
+3. 🔍 Task 3: Get Transaction by ID
 
 ✅**Goal**
 This endpoint allows retrieval of detailed information about a previously made eSIM purchase using the unique `transactionId` generated during that purchase request.
@@ -113,8 +112,36 @@ GET `/transaction/:id`
 | --------- | ------ | -------- | ------------------------------------------------------ |
 | `id`      | string | ✅ Yes    | Your own system’s `transactionId` used during purchase |
 
-💻 Example Request (INSOMNIA)
+💻 `Example Request (INSOMNIA)`
 
 GET `/transaction/2307ehsKEKGLE`
 
 ![alt text](image.png)
+
+
+4. 🔐Task 4: Webhook Signature Verification
+   
+✅ **Goal**
+This endpoint receives webhook events from Zendit (e.g., purchase status updates) and verifies their authenticity using a shared secret configured via the Zendit sandbox webhook registration page.
+
+🧾 Endpoint
+` /webhook`
+
+
+🔐 Authentication & Signature Verification
+When registering your webhook in the Zendit sandbox, you defined a custom HTTP header:
+
+- Header KEY: Authorization
+- Header Value: Bearer <webhook-secret-token>
+- This should also be secret token is stored in your .env file as: `WEBHOOK_SECRET=your-webhook-secret-token`
+
+💻 `Example Request ( Verify Signature through INSOMNIA)`
+
+POST `/webhook`
+
+{
+  "event": "esim.purchase.success",
+  "transactionId": "2307ehsKEKGLE",
+}
+
+![alt text](webhook.png)

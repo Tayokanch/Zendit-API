@@ -13,15 +13,12 @@ if (!signatureHeader || !signatureHeader.startsWith("Bearer ")) {
 }
 const signature = signatureHeader.split(" ")[1]; 
 
-console.log("📦 Payload received:", req.body);
-
-
 if (signature !== secret) {
   console.warn(" Invalid webhook signature token");
   return res.status(403).json({ error: "Invalid webhook signature" });
 }
     // Acknowledge the webhook
-    res.status(200).send({response:"Webhook received"});
+    res.status(200).send({response:"Webhook received" , data: req.body});
   } catch (err) {
     console.error("Error handling webhook:", err.message);
     res.status(500).json({ error: "Internal Server Error" });
