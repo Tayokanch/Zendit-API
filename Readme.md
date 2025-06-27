@@ -1,3 +1,9 @@
+✅ Requirements to RUN This Project
+1. Install Node.js (npm -v)
+2. Install Project Dependecies (npm install)
+3. Create `.env` file (Use the .env.example as a template:)
+4. Run the Server (npm start)
+
 🔐 **Environment Variables**
 
 ZENDIT_API_KEY=`your_sandbox_api_key_here`
