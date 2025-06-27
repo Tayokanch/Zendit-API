@@ -1,8 +1,11 @@
 🔐 **Environment Variables**
 
 ZENDIT_API_KEY=`your_sandbox_api_key_here`
+
 WEBHOOK_SECRET=`your-webhook-token-here`
+
 ZENDIT_BASE_URL="https://api.zendit.io/v1/esim"
+
 PORT=3000
 
 1. 📥 Task 1: Fetch Available eSIMs
@@ -58,8 +61,8 @@ GET `/esims?_limit=200&_offset=100&brand=eSIM`
 GET `/esims?_limit=200&_offset=0&brand=eSIM&country=US`
 ![alt text](filter_by_brand&country.png)
 
-===============================================================================================================
-===============================================================================================================
+==========================================================================
+==============================
 
 2. 📥 Task 2: Purchase an eSIM
 
@@ -118,6 +121,8 @@ GET `/transaction/2307ehsKEKGLE`
 
 ![alt text](image.png)
 
+==========================================================================
+==============================
 
 4. 🔐Task 4: Webhook Signature Verification
    
