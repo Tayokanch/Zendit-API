@@ -102,7 +102,7 @@ GET `/esims`
 
 ---
 
-1. 📥 Task 2: Purchase an eSIM
+2. 📥 Task 2: Purchase an eSIM
 
 ✅ **Goal**
 
